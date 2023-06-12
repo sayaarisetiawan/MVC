@@ -1,11 +1,20 @@
 <?php 
-class About {
-    public function index($nama= 'Hallo', $kamu= 'Guys')
+class About extends Controller {
+    public function index($nama= 'Hallo', $kamu= 'Guys', $umur=20)
     {
-        echo "$nama World, Great $kamu";
+        $data['nama'] = $nama;
+        $data['kamu'] = $kamu;
+        $data['umur'] = $umur;
+        $data['judul'] = 'About Me';
+        $this->view('templates/header', $data);
+        $this->view('about/index', $data);
+        $this->view('templates/footer');
     }
     public function page()
     {
-        echo 'about/page';
+        $data['judul'] = 'Pages';
+        $this->view('templates/header', $data);
+        $this->view('about/page');
+        $this->view('templates/footer');
     }
 }
